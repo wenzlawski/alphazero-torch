@@ -51,8 +51,10 @@ class AlphaZeroEvaluator(mcts.Evaluator):
         # ndarray isn't hashable
         cache_key = obs.tobytes() + mask.tobytes()
 
+        device = next(self._model.parameters()).device
+
         value, policy = self._cache.make(
-            cache_key, lambda: self._model.inference(obs, mask)
+            cache_key, lambda: self._model.inference(obs, mask, device=device)
         )
 
         return value[0], policy[0]  # Unpack batch

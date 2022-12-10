@@ -40,6 +40,7 @@ class Model(object):
         IE create the model. This is the method you call at start of training."""
         print(config)
         device = torch.device(config["device"])
+        self.device = device
         if device.type == "cuda":
             # enable cudnn auto-tuner
             torch.backends.cudnn.benchmark = True

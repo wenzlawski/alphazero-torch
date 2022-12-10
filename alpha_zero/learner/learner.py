@@ -140,7 +140,7 @@ def learner(
         )
 
         for batch in dataloader:
-            _, loss = model.update(batch)
+            _, loss = model.update(batch, device=config.device)
             losses.append(loss)
 
         # Always save a checkpoint, either for keeping or for loading the weights to
