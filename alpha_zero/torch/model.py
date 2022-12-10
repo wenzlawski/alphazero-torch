@@ -157,7 +157,7 @@ class Model(object):
             legals_mask = torch.tensor(legals_mask).to(device).float()
             out = self.net.inference(observation, legals_mask)
 
-        return out["value"], out["policy"]
+        return torch.Tensor.cpu(out["value"]), torch.Tensor.cpu(out["policy"])
 
     def update(self, batch, device="cpu"):
         """Runs a training step"""
