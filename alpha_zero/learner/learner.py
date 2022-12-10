@@ -137,6 +137,7 @@ def learner(
             dataset,
             sampler=sampler,
             batch_size=config.train_batch_size,
+            pin_memory=False,
         )
 
         for batch in dataloader:
